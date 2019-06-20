@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.event.EventListener
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -36,11 +35,11 @@ class ProcessGgtService(val runtimeService: RuntimeService) {
     }
   }
 
-
   @EventListener
   fun deploy(evt: PostDeployEvent) {
     evt.processEngine.repositoryService.createDeployment()
         .addModelInstance("ggt.bpmn", Bpmn.createExecutableProcess("ggt")
+            .camundaVersionTag("1")
             .startEvent()
             .serviceTask().name("Calculate GGT").camundaDelegateExpression("\${${ProcessGgtService::ggtDelegate.name}}")
             .endEvent()
@@ -50,5 +49,4 @@ class ProcessGgtService(val runtimeService: RuntimeService) {
         }
 
   }
-
 }

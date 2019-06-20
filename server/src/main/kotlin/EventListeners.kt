@@ -3,24 +3,26 @@ package de.cughh.meetup
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateTask
 import org.springframework.context.event.EventListener
+import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
 import java.time.Instant.now
 import java.time.temporal.ChronoUnit
 import java.util.*
 
 
-@Component
-class HistoryLogger {
+//@Component
+open class HistoryLogger {
   companion object  : KLogging()
 
-  @EventListener(condition = "#evt.getClass().getSimpleName().startsWith('Historic')")
-  fun handle(evt: Any) {
+  @Async
+  @EventListener(condition = """#evt.class.simpleName.startsWith("Historic")""")
+  open fun handle(evt: Any) {
     logger.info { "received: $evt" }
   }
 
 }
 
-@Component
+//@Component
 class UserTaskHandler {
   companion object  : KLogging()
 

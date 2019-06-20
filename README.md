@@ -9,36 +9,22 @@ To use the examples, run the spring boot app `gradle :server:bootRun`
 Cockpit is running on [localhost:8090](http://localhost:8090/app/welcome/default/#!/welcome)
 
 
- ## Overview
+## Agenda
 
 * new version 7.11.0
 * modeller rewrite: 3.1.0 (react)
 * spring boot starter 3.3.1
-* fluent test assertions - camunda-bpm-assert 4.0.0
-
-
-Offizielle Release Notes:
-
-* [Camunda 7.11.0](https://blog.camunda.com/post/2019/05/camunda-bpm-7110-released/)
-
-----
-
-## Agenda
-
-
-* Java/REST API: Case Insensitive Semantics for Task Variables
-
-* Complete Task with variables
-* Start Process with variables
-
-* camunda-bpm-assert 4.0.0
-
+* task completion
+* process as a service
 * external tasks java-api / springboot extension
 
+### out of scope
+
+* fluent test assertions - camunda-bpm-assert 4.0.0
 * Trigger BPMN Errors from Execution and Task Listeners
 * Java/REST API: Deleting Historic Variables
   * Delete Variable History in Cockpit Full (Enterprise)
-
+* Return Variables on Message Correlation
 
 ```
 historyService.deleteHistoricVariableInstance("aVariableInstanceId");
@@ -46,22 +32,28 @@ historyService.deleteHistoricVariableInstancesByProcessInstanceId("aProcessInsta
 ```
 
 
-* from https://blog.camunda.com/post/2019/05/camunda-bpm-7110-released/ 
-  * Operator Authorizations
-  * Operator and Admin Auditing
-  * Return Variables on Task Completion / Form Submission / Message Correlation
-  * Asynchronously set Removal Time on Historical Data
-  * BPMN Error Event Triggering from Execution Listeners
-  * Fluent Java Testing API
-  * Additional Supported Environments
+## What else
+
+* Fine-grained Permissions for Batches and Job Retries
+* MariaDB/MySQL: Job Due Dates after 2038
+* JBoss/Wildfly: Expressions in Camunda Subsystem
+* Java/REST API: Deleting Historic Variables
+* Change the Removal Time for Historic Processes
+* Engine Wide History Time to Live
+* More User Operation Log Entries
+* Support for Password Policies
+* Tasklist: Case-Insensitive Task Queries
+* Java/REST API: Case Insensitive Semantics for Task Variables
+* Operator Authorizations
+* Operator and Admin Auditing
+  
 
 
+## Offizielle Release Notes:
 
-## Notes
+* [Camunda 7.11.0](https://blog.camunda.com/post/2019/05/camunda-bpm-7110-released/)
 
 
-* External tasks (2 worker) mit neuer client api und spring boot
-* Rest auf prozess mit start/execute with variables
 
 
 

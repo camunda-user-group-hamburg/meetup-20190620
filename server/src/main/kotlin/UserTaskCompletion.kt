@@ -32,7 +32,7 @@ class CalculateTaskController(val taskService: TaskService, val runtimeService: 
     return ResponseEntity.ok().body(variableMap)
   }
 
-  @EventListener(condition = "#task.eventName.equals('complete') && #task.taskDefinitionKey.equals('task_multiply')")
+  @EventListener(condition = "#task.eventName.equals('complete') && #task.taskDefinitionKey.equals('task_multiply')") // TODO: this could be nicer!
   fun onComplete(task: DelegateTask) = with(task) {
     val price = getVariable("price") as Long
     val count = getVariable("count") as Long

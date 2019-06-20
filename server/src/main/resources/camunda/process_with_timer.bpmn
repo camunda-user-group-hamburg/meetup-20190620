@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1tdsadk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
+  <bpmn:process id="process_with_timer" name="Prozess mit Timer" isExecutable="true" camunda:versionTag="1">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0r9914j</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0r9914j" sourceRef="StartEvent_1" targetRef="timer" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ycnrt2" sourceRef="timer" targetRef="Task_08xmaba" />
+    <bpmn:userTask id="Task_08xmaba" name="Ich warte">
+      <bpmn:incoming>SequenceFlow_0ycnrt2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_00et28a</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_0tfhp7q">
+      <bpmn:incoming>SequenceFlow_00et28a</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_00et28a" sourceRef="Task_08xmaba" targetRef="EndEvent_0tfhp7q" />
+    <bpmn:intermediateCatchEvent id="timer" name="warte">
+      <bpmn:incoming>SequenceFlow_0r9914j</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ycnrt2</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDate xsi:type="bpmn:tFormalExpression">2019-06-28T20:12:42</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_with_timer">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="103" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0r9914j_di" bpmnElement="SequenceFlow_0r9914j">
+        <di:waypoint x="215" y="121" />
+        <di:waypoint x="340" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ycnrt2_di" bpmnElement="SequenceFlow_0ycnrt2">
+        <di:waypoint x="376" y="121" />
+        <di:waypoint x="457" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1i89ycv_di" bpmnElement="Task_08xmaba">
+        <dc:Bounds x="457" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0tfhp7q_di" bpmnElement="EndEvent_0tfhp7q">
+        <dc:Bounds x="647" y="103" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_00et28a_di" bpmnElement="SequenceFlow_00et28a">
+        <di:waypoint x="557" y="121" />
+        <di:waypoint x="647" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1bw8cuw_di" bpmnElement="timer">
+        <dc:Bounds x="340" y="103" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="345" y="146" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
