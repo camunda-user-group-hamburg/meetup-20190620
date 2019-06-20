@@ -1,0 +1,26 @@
+site:
+  about:
+    siteName: Was ist neu in Camunda 7.11.0
+    siteDescription: CUGHH Meetup - 20.06.2019
+BsDoc:
+  primaryColor: '#DE9149'
+  social:
+    twitter: 'holisticon'
+    github: camunda-user-group-hamburg/meetup-20190620
+  menu:
+    - type: 'wiki'
+
+
+#kotlindoc:
+#  sourceDirs:
+#    - './../../../../api/datatype/src/main/kotlin'
+#    - './../../../../api/projection/src/main/kotlin'
+#    - './../../../../api/rest/build/swagger/src/main/kotlin'
+#    - './../../../../application/src/main/kotlin'
+#    - './../../../../domain/match/src/main/kotlin'
+#  pages:
+#    extraCss:
+#      - 'assets/css/orchidKotlindoc.scss'
+#    menu:
+#      - type: "kotlindocClassLinks"
+#        includeItems: true

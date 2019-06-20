@@ -6,4 +6,6 @@ object Versions {
   val camundaSpringBoot = "3.3.1"
   val springBoot = "2.1.5.RELEASE"
 
+
+  val orchid = "0.17.1"
 }

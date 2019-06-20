@@ -6,22 +6,28 @@ plugins {
     id("org.springframework.boot") version Versions.springBoot
 }
 
-
-
 dependencies {
-    implementation(
-        platform("org.springframework.boot:spring-boot-dependencies:${Versions.springBoot}")
-    )
-    implementation(
-        platform("org.camunda.bpm:camunda-bom:${Versions.camunda}")
-    )
+    //
+    // BOMs
+    //
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:${Versions.springBoot}"))
+    implementation(platform("org.camunda.bpm:camunda-bom:${Versions.camunda}"))
+    
+    //
+    // CAMUNDA
+    //
     implementation("org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp-ee:${Versions.camundaSpringBoot}")
     implementation("com.h2database:h2")
 
-    // Use the Kotlin JDK 8 standard library.
+    //
+    // KOTLIN
+    //
+    implementation("io.github.microutils:kotlin-logging:1.6.26")
     implementation(kotlin("stdlib-jdk8"))
 
-    // Use the Kotlin test library.
+    //
+    // TEST
+    //
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 
     // Use the Kotlin JUnit integration.

@@ -1,23 +1,30 @@
-# meetup-20190620
+# Was ist neu in Camunda 7.11?
 
-Meetup Session: Was ist neu in Camunda 7.11?
+[CUGHH](https://cughh.de) Meetup - 20.06.2019
 
+for full docs, run `gradle :docs:orchidServe` and visit [localhost:8080](http://localhost:8080).
+
+To use the examples, run the spring boot app `gradle :server:bootRun`
+
+Cockpit is running on [localhost:8090](http://localhost:8090/app/welcome/default/#!/welcome)
+
+
+ ## Overview
+
+* new version 7.11.0
+* modeller rewrite: 3.1.0 (react)
+* spring boot starter 3.3.1
+* fluent test assertions - camunda-bpm-assert 4.0.0
+
+
+Offizielle Release Notes:
+
+* [Camunda 7.11.0](https://blog.camunda.com/post/2019/05/camunda-bpm-7110-released/)
+
+----
 
 ## Agenda
 
-
-
-* Spring Boot Starter 3.3.1
-  * uses sb 2.1.5.RELEASE
-
-
-* Timer recalculation (+Cockpit)
-
-```
-managementService.recalculateJobDuedate("aJobId", true);// based on original creation date of the job
-
-managementService.recalculateJobDuedate("aJobId", false);// based on current date
-```
 
 * Java/REST API: Case Insensitive Semantics for Task Variables
 
@@ -50,17 +57,9 @@ historyService.deleteHistoricVariableInstancesByProcessInstanceId("aProcessInsta
 
 
 
-## TODO
-
-* license file
-
-
-
-
 ## Notes
 
 
-* enterprise server mit camumda und h2
 * External tasks (2 worker) mit neuer client api und spring boot
 * Rest auf prozess mit start/execute with variables
 

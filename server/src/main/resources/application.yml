@@ -1,10 +1,14 @@
 spring:
   application:
     name: camunda
+server:
+  port: 8090
 camunda:
   bpm:
     admin-user:
       id: admin
+    filter:
+      create: All
 logging:
   level:
     root: INFO
