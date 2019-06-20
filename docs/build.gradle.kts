@@ -13,9 +13,11 @@ dependencies {
   orchidRuntime(orchid("PluginDocs"))
   orchidRuntime(orchid("Wiki"))
   orchidRuntime(orchid("Pages"))
+  orchidRuntime(orchid("Github"))
 }
 
 
 orchid {
   theme = "BsDoc"
+  githubToken = properties["githubToken"] as String
 }

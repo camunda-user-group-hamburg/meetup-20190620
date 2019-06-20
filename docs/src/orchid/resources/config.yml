@@ -10,6 +10,12 @@ BsDoc:
   menu:
     - type: 'wiki'
 
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'jangalinski'
+        repo: 'camunda-user-group-hamburg/meetup-20190620'
 
 #kotlindoc:
 #  sourceDirs:
