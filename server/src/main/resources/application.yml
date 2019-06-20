@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: camunda
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+logging:
+  level:
+    root: INFO
+    org.camunda.bpm.engine.persistence: WARN
+    org.springframework.test.annotation.ProfileValueUtils: WARN
