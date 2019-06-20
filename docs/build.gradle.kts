@@ -20,4 +20,5 @@ dependencies {
 orchid {
   theme = "BsDoc"
   githubToken = properties["githubToken"] as String
+  baseUrl = "https://camunda-user-group-hamburg.github.io/meetup-20190620/"
 }
