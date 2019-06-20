@@ -6,6 +6,7 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.engine.variable.Variables
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,13 +17,16 @@ import java.time.temporal.ChronoUnit.DAYS
 import java.util.*
 
 @RestController
+@ConditionalOnProperty(name = ["feature.recalculateTimer"], havingValue = "true", matchIfMissing = false)
 class WithTimerProcess(
     val runtimeService: RuntimeService,
     val managementService: ManagementService
 ) {
-
   companion object : KLogging()
 
+  /**
+   * Start a new process
+   */
   @GetMapping("/process/timer/start")
   fun start(): ResponseEntity<String> {
     val initialArrival = Instant.now().plus(10, DAYS)
@@ -36,6 +40,9 @@ class WithTimerProcess(
 
   }
 
+  /**
+   * Change arrival date and recalculate timer.
+   */
   @GetMapping("/process/timer/{pid}/reduce")
   fun reduce(@PathVariable("pid") pid: String): String {
     val job = getTimer(pid)
@@ -59,7 +66,11 @@ class WithTimerProcess(
     return "New Timer = $newTimerDue"
   }
 
-  private fun getTimer(pid:String) = managementService.createJobQuery().active().activityId("timer").processInstanceId(pid).singleResult()
+  private fun getTimer(pid:String) = managementService.createJobQuery()
+      .active()
+      .activityId("timer")
+      .processInstanceId(pid)
+      .singleResult()
 
   /**
    * The due date is always 2 days before arrival
@@ -79,12 +90,6 @@ class WithTimerProcess(
     }
 
     return dueDate.toDate()
-  }
-
-  @Bean
-  fun logTimerDueDateDelegate() = JavaDelegate { execution ->
-
-
   }
 
   private fun Instant.toDate() = Date.from(this)

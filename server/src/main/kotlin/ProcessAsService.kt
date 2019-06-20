@@ -5,6 +5,7 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.event.EventListener
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@ConditionalOnProperty(name = ["feature.processGgtService"], havingValue = "true", matchIfMissing = false)
 class ProcessGgtService(val runtimeService: RuntimeService) {
   companion object : KLogging()
 
@@ -22,6 +24,7 @@ class ProcessGgtService(val runtimeService: RuntimeService) {
       .executeWithVariablesInReturn().variables
 
   @Bean
+  @ConditionalOnProperty(name = ["feature.processGgtService"], havingValue = "true", matchIfMissing = false)
   fun ggtDelegate() = JavaDelegate { execution ->
     fun ggt(a: Long, b: Long): Long {
       if (b == 0L) return a

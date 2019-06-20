@@ -28,3 +28,16 @@ Den camunda license key ablegen in:
 * `$HOME/.camunda/license.txt`
 
 
+## Features
+
+Die einzelnen features der Demo lassen sich über die application.yaml ein und ausschalten:
+
+```
+feature:
+  startFooProcesses: true
+  logHistoric: true
+  onTaskCreate: true
+  processGgtService: true
+  recalculateTimer: true
+  userTaskCompletion: true
+```

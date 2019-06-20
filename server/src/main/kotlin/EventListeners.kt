@@ -2,6 +2,7 @@ package de.cughh.meetup
 
 import mu.KLogging
 import org.camunda.bpm.engine.delegate.DelegateTask
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.event.EventListener
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
@@ -10,19 +11,21 @@ import java.time.temporal.ChronoUnit
 import java.util.*
 
 
-//@Component
-open class HistoryLogger {
+@Component
+@ConditionalOnProperty(name = ["feature.logHistoric"], havingValue = "true", matchIfMissing = false)
+class HistoryLogger {
   companion object  : KLogging()
 
   @Async
   @EventListener(condition = """#evt.class.simpleName.startsWith("Historic")""")
-  open fun handle(evt: Any) {
+  fun handle(evt: Any) {
     logger.info { "received: $evt" }
   }
 
 }
 
-//@Component
+@Component
+@ConditionalOnProperty(name = ["feature.onTaskCreate"], havingValue = "true", matchIfMissing = false)
 class UserTaskHandler {
   companion object  : KLogging()
 

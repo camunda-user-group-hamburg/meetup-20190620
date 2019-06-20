@@ -4,12 +4,14 @@ import org.camunda.bpm.engine.RuntimeService
 import org.camunda.bpm.engine.TaskService
 import org.camunda.bpm.engine.delegate.DelegateTask
 import org.camunda.bpm.engine.variable.Variables
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.event.EventListener
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/task/calculate")
+@ConditionalOnProperty(name = ["feature.userTaskCompletion"], havingValue = "true", matchIfMissing = false)
 class CalculateTaskController(val taskService: TaskService, val runtimeService: RuntimeService) {
 
   @GetMapping("/start")

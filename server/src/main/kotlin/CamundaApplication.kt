@@ -6,6 +6,7 @@ import org.camunda.bpm.model.bpmn.Bpmn
 import org.camunda.bpm.spring.boot.starter.annotation.EnableProcessApplication
 import org.camunda.bpm.spring.boot.starter.event.PostDeployEvent
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.runApplication
 import org.springframework.context.event.EventListener
 import org.springframework.scheduling.annotation.EnableAsync
@@ -20,23 +21,20 @@ import org.springframework.stereotype.Component
 @EnableScheduling
 class CamundaApplication
 
-fun main(args:Array<String>) = runApplication<CamundaApplication>(*args).let { Unit }
+fun main(args: Array<String>) = runApplication<CamundaApplication>(*args).let { Unit }
 
 
-
-
-
-
-
-
-
-//@Component
+/**
+ * Deploys generated foo process and starts new instance every 10 seconds.
+ */
+@Component
+@ConditionalOnProperty(name = ["feature.startFooProcesses"], havingValue = "true", matchIfMissing = false)
 class Starter(val runtimeService: RuntimeService) {
 
-  companion object:KLogging()
+  companion object : KLogging()
 
   @EventListener
-  fun deployFooProcess(evt: PostDeployEvent) = with (evt) {
+  fun deployFooProcess(evt: PostDeployEvent) = with(evt) {
     processEngine.repositoryService.createDeployment()
         .addModelInstance("foo.bpmn", Bpmn.createExecutableProcess("process_foo")
             .camundaVersionTag("1")

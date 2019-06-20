@@ -14,3 +14,11 @@ logging:
     root: INFO
     org.camunda.bpm.engine.persistence: WARN
     org.springframework.test.annotation.ProfileValueUtils: WARN
+
+feature:
+  startFooProcesses: true
+  logHistoric: true
+  onTaskCreate: true
+  processGgtService: true
+  recalculateTimer: true
+  userTaskCompletion: true
