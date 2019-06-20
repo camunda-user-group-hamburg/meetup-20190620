@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/setup</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/starter</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/eventhandler</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/usertask-with-variables</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/process-as-service</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    <url>
+        <loc>https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/timer-recalculation</loc>
+        <lastmod>2019-06-21</lastmod>
+        <priority>0.0</priority>
+        
+    </url>
+    
+</urlset>

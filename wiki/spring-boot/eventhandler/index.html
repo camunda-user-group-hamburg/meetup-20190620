@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.17.1"/>
+<link rel="icon" href="https://camunda-user-group-hamburg.github.io/meetup-20190620/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>EventHandler</title>
+
+
+<meta name="description" content="CUGHH Meetup - 20.06.2019">
+
+
+
+<link rel="prev" href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/starter">
+
+
+<link rel="next" href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/usertask-with-variables">
+
+
+<script>
+    window.site = {"orchidVersion":"0.17.1","baseUrl":"https://camunda-user-group-hamburg.github.io/meetup-20190620","environment":"debug","version":"20190620"};
+</script>
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: BsDoc -->
+<!-- Class: com.eden.orchid.bsdoc.BSDocTheme -->
+
+<!-- PAGE -->
+<!-- Type: wiki -->
+<!-- Class: com.eden.orchid.wiki.pages.WikiPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: wiki, page -->
+<!-- Resolved Page Template:  -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.api.resources.resource.FileResource -->
+<!-- Source Filename: wiki/spring-boot/eventhandler.md -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"wiki/spring-boot","baseUrl":"https://camunda-user-group-hamburg.github.io/meetup-20190620","fileName":"eventhandler","extension":"html","usePrettyUrl":true,"link":"https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/eventhandler"},"next":{"path":"wiki/engine","baseUrl":"https://camunda-user-group-hamburg.github.io/meetup-20190620","fileName":"usertask-with-variables","extension":"html","usePrettyUrl":true,"link":"https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/usertask-with-variables"},"previous":{"path":"wiki/spring-boot","baseUrl":"https://camunda-user-group-hamburg.github.io/meetup-20190620","fileName":"starter","extension":"html","usePrettyUrl":true,"link":"https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/starter"},"description":"","title":"EventHandler"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://camunda-user-group-hamburg.github.io/meetup-20190620/BsDoc/6061292a/assets/css/bsdoc.css"/>
+<!-- end:inject styles -->
+
+
+</head>
+<body>
+
+
+
+
+<a class="github-fork-ribbon left-top"
+   href="https://github.com/camunda-user-group-hamburg/meetup-20190620"
+   title="Fork me on GitHub">Fork me on GitHub</a>
+
+
+<header class="navbar navbar-fixed-top bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header" role="banner">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://camunda-user-group-hamburg.github.io/meetup-20190620">Was ist neu in Camunda 7.11.0</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        <li><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/setup">setup</a></li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">spring-boot<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/starter">Spring Boot</a></li>
+                                
+                                    <li><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/eventhandler">EventHandler</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">engine<span class="caret"></span></a>
+                            <ul class="dropdown-menu scrollable-menu">
+                                
+                                    <li><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/usertask-with-variables">User Task variables</a></li>
+                                
+                                    <li><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/process-as-service">Process as Service</a></li>
+                                
+                                    <li><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/timer-recalculation">Timer Recalculation</a></li>
+                                
+                            </ul>
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="top"></div>
+
+
+    <div class="bs-docs-masthead" id="jumbotron">
+        <div class="container">
+            <h1 class="home-title">EventHandler</h1>
+        </div>
+    </div>
+
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" role="main">
+        <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+    
+    
+        <li class="breadcrumb-item"><a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki">Wiki</a></li>
+    
+    
+    
+        <li class="breadcrumb-item active" aria-current="page">EventHandler</li>
+    
+    
+    </ul>
+</nav>
+        
+
+        
+        
+            
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <h1 id="spring-eventhandler">Spring EventHandler</h1>
+<p>Camunda published alle</p>
+<ul>
+<li>Lifecycle Hooks
+<ul>
+<li>TaskListener[create|assign|complete|cancel]</li>
+<li>ExecutionListener[start|end|take]</li>
+</ul>
+</li>
+<li>Historic events
+<ul>
+<li>HistoricTaskInstance</li>
+<li>HistoricProcessInstance</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<p>per Spring <code>ApplicationEventPublisher</code>.</p>
+<p>Die <a href="https://github.com/camunda/camunda-bpm-reactor">camunda-bpm-reactor</a> Extension ist damit im Spring Boot
+Umfeld hinfällig.</p>
+<h2 id="log">Log</h2>
+<pre><code>--- [main] org.camunda.bpm.spring.boot              : STARTER-SB020 ProcessApplication enabled: autoDeployment via springConfiguration#deploymentResourcePattern is disabled
+--- [main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
+--- [main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-003: Task events will be published as Spring Events.
+--- [main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-005: Execution events will be published as Spring Events.
+--- [main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-007: History events will be published as Spring events.
+--- [main] org.camunda.bpm.engine                   : ENGINE-00001 Process Engine default created.
+</code></pre>
+<p>und historische events:</p>
+<pre><code>--- [main] de.cughh.meetup.HistoryLogger            : received: HistoricActivityInstanceEventEntity[activityId=task_foo, activityName=Do foo, activityType=userTask, activityInstanceId=task_foo:1ba2d423-9360-11e9-9da8-acde48001122, activityInstanceState=0, parentActivityInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, calledProcessInstanceId=null, calledCaseInstanceId=null, taskId=null, taskAssignee=null, durationInMillis=null, startTime=Thu Jun 20 15:34:20 CEST 2019, endTime=null, eventType=start, executionId=1b9eb571-9360-11e9-9da8-acde48001122, processDefinitionId=process_foo:1:1b9c9290-9360-11e9-9da8-acde48001122, rootProcessInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, processInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, tenantId=null]
+--- [main] de.cughh.meetup.HistoryLogger            : received: HistoricTaskInstanceEventEntity[taskId1ba34954-9360-11e9-9da8-acde48001122, assignee=null, owner=null, name=Do foo, description=null, dueDate=null, followUpDate=null, priority=50, parentTaskId=null, deleteReason=null, taskDefinitionKey=task_foo, durationInMillis=null, startTime=Thu Jun 20 15:34:20 CEST 2019, endTime=null, id=1ba34954-9360-11e9-9da8-acde48001122, eventType=create, executionId=1b9eb571-9360-11e9-9da8-acde48001122, processDefinitionId=process_foo:1:1b9c9290-9360-11e9-9da8-acde48001122, rootProcessInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, processInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, activityInstanceId=task_foo:1ba2d423-9360-11e9-9da8-acde48001122, tenantId=null]
+--- [main] de.cughh.meetup.HistoryLogger            : received: HistoricActivityInstanceEventEntity[activityId=task_foo, activityName=Do foo, activityType=userTask, activityInstanceId=task_foo:1ba2d423-9360-11e9-9da8-acde48001122, activityInstanceState=0, parentActivityInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, calledProcessInstanceId=null, calledCaseInstanceId=null, taskId=1ba34954-9360-11e9-9da8-acde48001122, taskAssignee=null, durationInMillis=null, startTime=Thu Jun 20 15:34:20 CEST 2019, endTime=null, eventType=update, executionId=1b9eb571-9360-11e9-9da8-acde48001122, processDefinitionId=process_foo:1:1b9c9290-9360-11e9-9da8-acde48001122, rootProcessInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, processInstanceId=1b9eb571-9360-11e9-9da8-acde48001122, tenantId=null]
+
+</code></pre>
+<h3 id="task">Task</h3>
+<ul>
+<li>wurde erzeugt und
+<ul>
+<li>Admin assigned</li>
+<li>candidateGroup <code>holisticon</code></li>
+<li>due in zwei Tagen</li>
+</ul>
+</li>
+</ul>
+<h2 id="todo">TODO</h2>
+<p>Die SPEL für conditions ist nicht besonders schön:</p>
+<pre><code>@EventListener(condition = &quot;#task.eventName.equals('complete') &amp;&amp; #task.taskDefinitionKey.equals('task_multiply')&quot;)
+  fun onComplete(task: DelegateTask) = with(task) {
+</code></pre>
+<p>verglichen mit camunda-bpm-reactor:</p>
+<pre><code>@CamundaSelector(type = &quot;userTask&quot;, event = TaskListener.EVENTNAME_CREATE)
+public class TaskCreateListener implements TaskListener {
+</code></pre>
+<p>da fehlt noch was. Zum Beispiel: <a href="https://stackoverflow.com/questions/54576124/how-to-test-spring-event-listener-conditional-spel">Using beans in condition</a></p>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        
+        </div>
+
+        <!-- Page navigation
+        =========================================== -->
+        <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print" id="bs-docs-sidebar">
+    
+
+    <ul class="nav bs-docs-sidenav">
+        
+    </ul>
+
+    
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+    <a class="back-to-top" href="#top">
+        <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+    </a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container bs-docs-container">
+    <footer class="bs-docs-footer" role="contentinfo">
+    <div class="row">
+        <div class="col-xs-12">
+            <nav aria-label="navigateClasses">
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/spring-boot/starter">
+                                <span aria-hidden="true">&larr;</span>
+                                <span>Spring Boot</span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="next">
+                            <a href="https://camunda-user-group-hamburg.github.io/meetup-20190620/wiki/engine/usertask-with-variables">
+                                <span>User Task variables</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="icons">
+    
+    
+        <a href="https://github.com/camunda-user-group-hamburg/meetup-20190620" class="fa fa-github"></a>
+    
+        <a href="https://twitter.com/holisticon" class="fa fa-twitter"></a>
+    
+    
+    </div>
+    <br>
+    <p>
+    Documentation template based on the
+    <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+    Jekyll theme by the <a href="https://getbootstrap.com">Bootstrap team</a>. Site created with
+    <a href="https://orchid.netlify.com">Orchid</a>.
+</p>
+
+<ul class="bs-docs-footer-links muted">
+    <li>Currently 20190620</li>
+</ul>
+
+</footer>
+    </div>
+</div>
+
+
+<!-- start:inject scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+<script src="https://camunda-user-group-hamburg.github.io/meetup-20190620/BsDoc/6061292a/assets/js/bsdoc.js"></script>
+<!-- end:inject scripts -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"></script>
+
+<script>
+    $(function () {
+        window.colors = ['#DE9149', '#000000'];
+                  
+    trianglify({});
+
+        buildNav();
+    });
+</script>
+
+</body>
+</html>
